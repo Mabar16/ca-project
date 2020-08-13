@@ -33,9 +33,9 @@ pip3 install -r requirements.txt'''
           }
           steps {
             unstash 'Code'
-            sh 'ci/docker-build.sh'
+            sh 'docker-build.sh'
             sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
-            sh 'ci/docker-push.sh'
+            sh 'docker-push.sh'
           }
         }
 
