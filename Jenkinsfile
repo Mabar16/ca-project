@@ -31,7 +31,8 @@ pip3 install -r requirements.txt'''
 
         stage('Compress and Archive') {
           steps {
-            sh 'tar -zcvf ./artifacts/flaskapp.tar.gz .'
+            sh '''mkdir ./artifacts/
+tar -zcvf ./artifacts/flaskapp.tar.gz .'''
             archiveArtifacts 'artifacts/'
             stash(name: 'Code', excludes: '.git')
           }
