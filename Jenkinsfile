@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Hello World') {
       steps {
-        sh 'echo "hello World"'
+        stash(excludes: '.git', name: 'Code')
       }
     }
 
