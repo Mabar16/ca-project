@@ -18,7 +18,7 @@ pip3 install flask
 
     stage('Run Script') {
       steps {
-        sh 'python run.py'
+        sh 'python3 run.py'
       }
     }
 
