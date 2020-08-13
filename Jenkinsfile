@@ -12,6 +12,8 @@ pipeline {
         sh '''apt-get update -y
 apt-get install python3-pip -y
 pip3 install flask
+pip3 install sqlalchemy
+pip3 install wtforms
 '''
       }
     }
