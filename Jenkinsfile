@@ -21,9 +21,22 @@ pip3 install -r requirements.txt'''
       }
     }
 
-    stage('Run') {
-      steps {
-        sh 'python3 run.py &'
+    stage('Parallel Execution') {
+      parallel {
+        stage('Run') {
+          steps {
+            sh 'python3 run.py &'
+          }
+        }
+
+        stage('Compress and Archive') {
+          steps {
+            sh 'tar -zcvf ./artifacts/flaskapp.tar.gz .'
+            archiveArtifacts 'artifacts/'
+            stash(name: 'Code', excludes: '.git')
+          }
+        }
+
       }
     }
 
