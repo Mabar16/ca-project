@@ -15,15 +15,15 @@ pip3 install -r requirements.txt'''
       }
     }
 
-    stage('Run Script') {
+    stage('Test') {
       steps {
-        sh 'python3 run.py'
+        sh 'python3 tests.py'
       }
     }
 
-    stage('Tests') {
+    stage('Run') {
       steps {
-        sh 'python3 tests.py'
+        sh 'python3 run.py &'
       }
     }
 
