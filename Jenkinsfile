@@ -49,7 +49,11 @@ pip3 install -r requirements.txt'''
           steps {
             unstash 'Code'
             sh '''mkdir ./artifacts/
-tar -zcvf ./artifacts/flaskapp.tar.gz .'''
+mkdir tmp
+cp *.py ./tmp/
+cp -r app/ ./tmp/
+cp -r db_repository/ ./tmp/
+tar -zcvf ./artifacts/flaskapp.tar.gz tmp/'''
             archiveArtifacts 'artifacts/'
             stash(name: 'Code', excludes: '.git')
             skipDefaultCheckout true
