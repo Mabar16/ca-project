@@ -11,9 +11,7 @@ pipeline {
       steps {
         sh '''apt-get update -y
 apt-get install python3-pip -y
-pip3 install flask
-pip3 install flask_sqlalchemy
-pip3 install flask_wtf'''
+pip3 install -r requirements.txt'''
       }
     }
 
