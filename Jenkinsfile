@@ -54,6 +54,7 @@ cp *.py ./tmp/
 cp -r app/ ./tmp/
 cp -r db_repository/ ./tmp/
 cd tmp
+pwd
 tar -zcvf .././artifacts/flaskapp.tar.gz tmp/'''
             archiveArtifacts 'artifacts/'
             stash(name: 'Code', excludes: '.git')
