@@ -7,12 +7,18 @@ pipeline {
       }
     }
 
-    stage('Run App') {
+    stage('Setup') {
       steps {
         sh '''apt-get update -y
 apt-get install python3-pip -y
 pip3 install flask
-python run.py'''
+'''
+      }
+    }
+
+    stage('Run Script') {
+      steps {
+        sh 'python run.py'
       }
     }
 
