@@ -23,9 +23,19 @@ pip3 install -r requirements.txt'''
 
     stage('Parallel Execution') {
       parallel {
-        stage('Run') {
+        stage('Push Docker app') {
+          agent any
+          when {
+            branch 'master'
+          }
+          environment {
+            DOCKERCREDS = credentials('docker_login')
+          }
           steps {
-            sh 'python3 run.py &'
+            unstash 'Code'
+            sh 'ci/build-docker.sh'
+            sh 'echo "$DOCKERCREDS_PSW" | docker login -u "$DOCKERCREDS_USR" --password-stdin'
+            sh 'ci/push-docker.sh'
           }
         }
 
@@ -41,5 +51,8 @@ tar -zcvf ./artifacts/flaskapp.tar.gz .'''
       }
     }
 
+  }
+  environment {
+    docker_username = 'mabar16'
   }
 }
