@@ -55,6 +55,7 @@ cp -r app/ ./tmp/
 cp -r db_repository/ ./tmp/
 cd tmp
 pwd
+ls ..
 tar -zcvf .././artifacts/flaskapp.tar.gz tmp/'''
             archiveArtifacts 'artifacts/'
             stash(name: 'Code', excludes: '.git')
