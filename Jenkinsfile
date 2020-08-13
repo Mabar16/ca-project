@@ -30,6 +30,7 @@ pip3 install -r requirements.txt'''
           }
           environment {
             DOCKERCREDS = credentials('docker_login')
+            docker_username = 'mabar16'
           }
           steps {
             unstash 'Code'
