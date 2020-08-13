@@ -52,6 +52,12 @@ tar -zcvf ./artifacts/flaskapp.tar.gz .'''
       }
     }
 
+    stage('Deploy') {
+      steps {
+        sh 'echo \'deploy\''
+      }
+    }
+
   }
   environment {
     docker_username = 'mabar16'
