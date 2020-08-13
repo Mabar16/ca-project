@@ -21,5 +21,11 @@ pip3 install -r requirements.txt'''
       }
     }
 
+    stage('Tests') {
+      steps {
+        sh 'python3 tests.py'
+      }
+    }
+
   }
 }
