@@ -9,7 +9,9 @@ pipeline {
 
     stage('Run App') {
       steps {
-        sh '''pip install flask
+        sh '''apt-get update -y
+apt-get install pip -y
+pip install flask
 python run.py'''
       }
     }
